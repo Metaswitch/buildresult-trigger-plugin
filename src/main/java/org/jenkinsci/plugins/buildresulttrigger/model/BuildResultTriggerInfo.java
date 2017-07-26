@@ -132,12 +132,12 @@ public class BuildResultTriggerInfo extends AbstractDescribableImpl<BuildResultT
                 if (StringUtils.isNotBlank(projectName)) {
                     Item item = Jenkins.getActiveInstance().getItem(projectName, project, Item.class);
                     if (item == null) {
-                        AbstractProject suggestion = AbstractProject.findNearest(projectName, project.getParent());
+                        Job suggestion =  Items.findNearest(Job.class, projectName, project.getParent());
                         assert suggestion != null;
                         return FormValidation.error(Messages.BuildTrigger_NoSuchProject(projectName,
                                    suggestion.getRelativeNameFrom(project)));
                     }
-                    if (!(item instanceof AbstractProject)) {
+                    if (!(item instanceof Job)) {
                         return FormValidation.error(Messages.BuildTrigger_NotBuildable(projectName));
                     }
                     hasProjects = true;

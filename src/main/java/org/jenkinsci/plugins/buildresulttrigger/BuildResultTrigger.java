@@ -102,9 +102,10 @@ public class BuildResultTrigger extends AbstractTriggerByFullContext<BuildResult
             this.actionTitle = actionTitle;
         }
 
+        // class is final and method only used for Jelly so can change signature
         @SuppressWarnings("unused")
-        public AbstractProject<?, ?> getOwner() {
-            return (AbstractProject) job;
+        public Job<?, ?> getOwner() {
+            return (Job) job;
         }
 
         public String getIconFileName() {
