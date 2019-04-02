@@ -4,7 +4,6 @@ import antlr.ANTLRException;
 import hudson.Extension;
 import hudson.Util;
 import hudson.console.AnnotatedLargeText;
-import hudson.matrix.MatrixConfiguration;
 import hudson.model.*;
 import hudson.model.listeners.ItemListener;
 import hudson.security.ACL;
@@ -202,7 +201,7 @@ public class BuildResultTrigger extends AbstractTriggerByFullContext<BuildResult
     }
 
     private boolean isValidBuildResultProject(AbstractProject item) {
-        return item != null && !(item instanceof MatrixConfiguration);
+        return item != null;// TODO: check item type
     }
 
     @Override

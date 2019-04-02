@@ -3,7 +3,7 @@ package org.jenkinsci.plugins.buildresulttrigger.model;
 import hudson.Extension;
 import hudson.Util;
 import hudson.model.*;
-import hudson.tasks.Messages;
+import hudson.tasks.Messages; // TODO: remove (replace with plugin-specific messages)
 import hudson.util.FormValidation;
 import jenkins.model.Jenkins;
 import org.apache.commons.lang.StringUtils;
@@ -131,7 +131,7 @@ public class BuildResultTriggerInfo extends AbstractDescribableImpl<BuildResultT
                 if (StringUtils.isNotBlank(projectName)) {
                     Item item = Jenkins.getInstance().getItem(projectName, project, Item.class);
                     if (item == null) {
-                        return FormValidation.error(Messages.BuildTrigger_NoSuchProject(projectName,
+                        return FormValidation.error(Messages._BuildTrigger_NoSuchProject(projectName,
                                 AbstractProject.findNearest(projectName, project.getParent()).getRelativeNameFrom(project)));
                     }
                     if (!(item instanceof AbstractProject)) {
